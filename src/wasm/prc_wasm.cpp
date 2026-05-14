@@ -16,7 +16,8 @@
 namespace {
 std::vector<uint8_t> g_output;
 std::string g_error;
-// Keep the existing asymptote default crease angle for compatibility.
+// Keep the asymptote-default crease angle for tessellation compatibility.
+// This angle controls smoothing across triangle edges in generated geometry.
 const double kDefaultCreaseAngleDegrees = 25.8419;
 const char* kSizeLimitError = "Generated PRC exceeds 32-bit size API limit.";
 

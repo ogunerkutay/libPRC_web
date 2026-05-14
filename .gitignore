@@ -1,5 +1,5 @@
 bld
-build
+/build/
 
 # Compiled Object files
 *.slo
