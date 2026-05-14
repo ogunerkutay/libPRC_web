@@ -18,6 +18,7 @@ std::vector<uint8_t> g_output;
 std::string g_error;
 // Keep the existing asymptote default crease angle for compatibility.
 const double kDefaultCreaseAngleDegrees = 25.8419;
+const char* kSizeLimitError = "Generated PRC exceeds 32-bit size API limit.";
 
 void setError(const char* message)
 {
@@ -112,7 +113,7 @@ PRC_WASM_KEEPALIVE int prc_generate_triangle_mesh(
     }
     if( g_output.size() > static_cast<size_t>( std::numeric_limits<uint32_t>::max() ) )
     {
-        setError( "Generated PRC exceeds 32-bit size API limit." );
+        setError( kSizeLimitError );
         return 0;
     }
 
@@ -130,7 +131,7 @@ PRC_WASM_KEEPALIVE uint32_t prc_get_output_size()
 {
     if( g_output.size() > static_cast<size_t>( std::numeric_limits<uint32_t>::max() ) )
     {
-        g_error = "Generated PRC exceeds 32-bit size API limit.";
+        g_error = kSizeLimitError;
         return 0;
     }
     return static_cast<uint32_t>( g_output.size() );
