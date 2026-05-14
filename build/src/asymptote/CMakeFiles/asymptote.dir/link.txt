@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libasymptote.a CMakeFiles/asymptote.dir/PRCbitStream.cc.o CMakeFiles/asymptote.dir/PRCdouble.cc.o CMakeFiles/asymptote.dir/oPRCFile.cc.o CMakeFiles/asymptote.dir/writePRC.cc.o
+/usr/bin/ranlib ../../lib/libasymptote.a
