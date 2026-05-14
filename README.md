@@ -51,3 +51,25 @@ like this:
       -DPNG_PNG_INCLUDE_DIR=<png_include_dir> \
       -DPNG_LIBRARY=<png_library>
 ```
+
+
+WebAssembly PRC generator
+=========================
+
+An initial WebAssembly entrypoint is available in `src/wasm/prc_wasm.cpp`.
+It exposes a C ABI for generating a PRC binary from a triangle mesh in memory:
+
+- `prc_generate_triangle_mesh(vertices_xyz, vertex_count, triangle_indices, triangle_count)`
+- `prc_get_output_ptr()`
+- `prc_get_output_size()`
+- `prc_get_last_error()`
+- `prc_clear_output()`
+
+To build the wasm module with Emscripten:
+
+```
+emcmake cmake -S . -B build-wasm
+cmake --build build-wasm -j
+```
+
+When `EMSCRIPTEN` is enabled, CMake creates `prc_wasm.js` and `prc_wasm.wasm`.
