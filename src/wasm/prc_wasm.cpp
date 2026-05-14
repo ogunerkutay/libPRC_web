@@ -16,6 +16,7 @@
 namespace {
 std::vector<uint8_t> g_output;
 std::string g_error;
+const double kDefaultCreaseAngleDegrees = 25.8419;
 
 void setError(const char* message)
 {
@@ -35,12 +36,12 @@ PRC_WASM_KEEPALIVE int prc_generate_triangle_mesh(
     g_output.clear();
     g_error.clear();
 
-    if( vertices_xyz == NULL )
+    if( vertices_xyz == nullptr )
     {
         setError( "vertices_xyz is null." );
         return 0;
     }
-    if( triangle_indices == NULL )
+    if( triangle_indices == nullptr )
     {
         setError( "triangle_indices is null." );
         return 0;
@@ -88,11 +89,11 @@ PRC_WASM_KEEPALIVE int prc_generate_triangle_mesh(
         vertex_count, points,
         triangle_count, triangles,
         material,
-        0, NULL, NULL,
-        0, NULL, NULL,
-        0, NULL, NULL,
-        0, NULL, NULL,
-        25.8419 );
+        0, nullptr, nullptr,
+        0, nullptr, nullptr,
+        0, nullptr, nullptr,
+        0, nullptr, nullptr,
+        kDefaultCreaseAngleDegrees );
 
     if( !file.finish() )
     {
@@ -115,7 +116,7 @@ PRC_WASM_KEEPALIVE int prc_generate_triangle_mesh(
 PRC_WASM_KEEPALIVE const uint8_t* prc_get_output_ptr()
 {
     if( g_output.empty() )
-        return NULL;
+        return nullptr;
     return g_output.data();
 }
 
